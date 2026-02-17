@@ -1,0 +1,14 @@
+int splitArrayBrute(vector<int>& nums) {
+    int n = nums.size();
+    int ans = INT_MAX;
+
+    for (int i = 0; i < n - 1; i++) {
+        int leftSum = 0, rightSum = 0;
+
+        for (int j = 0; j <= i; j++) leftSum += nums[j];
+        for (int j = i + 1; j < n; j++) rightSum += nums[j];
+
+        ans = min(ans, max(leftSum, rightSum));
+    }
+    return ans;
+}
