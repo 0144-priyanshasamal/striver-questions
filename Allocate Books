@@ -1,0 +1,36 @@
+bool isPossible(vector<int>& arr, int m, int mid) {
+    int students = 1;
+    int pages = 0;
+
+    for (int i = 0; i < arr.size(); i++) {
+        if (pages + arr[i] <= mid) {
+            pages += arr[i];
+        } else {
+            students++;
+            pages = arr[i];
+            if (students > m) return false;
+        }
+    }
+    return true;
+}
+
+int allocateBooks(vector<int>& arr, int m) {
+    int n = arr.size();
+    if (m > n) return -1;
+
+    int low = *max_element(arr.begin(), arr.end());
+    int high = accumulate(arr.begin(), arr.end(), 0);
+    int ans = -1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (isPossible(arr, m, mid)) {
+            ans = mid;
+            high = mid - 1; // try better answer
+        } else {
+            low = mid + 1;
+        }
+    }
+    return ans;
+}
