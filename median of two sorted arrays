@@ -1,0 +1,39 @@
+int ind1el=-1,ind2el=-1;
+
+while(i<n1 && j < n2) {
+
+if (a[i]b[j]) {
+
+if(cnt == ind1) indlel = a[i]; if(cnt == ind2) ind2el = a[i]; cnt++; i++;
+
+}
+
+else {
+
+if(cnt == ind1) indlel = b[j]; if(cnt == ind2) ind2el = b[j]; cnt++; j++;
+
+}
+
+}
+
+while(i<n1) {
+
+if(cnt == ind1) indlel = a[i]; if(cnt == ind2) ind2el = a[i]; cnt++;
+
+i++;
+
+}
+
+while(j<n2){
+
+if(cnt == ind1) indlel = b[j]; if(cnt == ind2) ind2el = b[j]; cnt++;
+
+j++;
+
+if(n%2== 1) {
+
+}
+
+return ind2e1);
+
+return (double) ((double) (indlel + ind2el)) / 2.0;
