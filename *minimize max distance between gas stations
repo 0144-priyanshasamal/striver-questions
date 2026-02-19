@@ -1,0 +1,21 @@
+class Solution {
+public:
+    double minmaxGasDist(vector<int>& stations, int k) {
+
+        sort(stations.begin(), stations.end());
+       priority_queue<pair<double, pair<double,int>>> pq;
+for(int i = 1; i < stations.size(); i++) {
+            double gap = stations[i] - stations[i - 1];
+            pq.push({gap, {gap, 1}});
+  for(int i = 0; i < k; i++) {
+            auto top = pq.top();
+            pq.pop();
+double gap = top.second.first;
+            int parts = top.second.second + 1;
+
+            pq.push({gap / parts, {gap, parts}});
+        }
+
+        return pq.top().first;
+    }
+};
