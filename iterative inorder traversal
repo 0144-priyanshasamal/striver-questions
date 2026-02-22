@@ -1,0 +1,23 @@
+vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> ans;
+    stack<TreeNode*> st;
+    TreeNode* curr = root;
+
+    while (curr != NULL || !st.empty()) {
+        // Step 1: Go left as much as possible
+        while (curr != NULL) {
+            st.push(curr);
+            curr = curr->left;
+        }
+
+        // Step 2: Process node
+        curr = st.top();
+        st.pop();
+        ans.push_back(curr->val);
+
+        // Step 3: Go right
+        curr = curr->right;
+    }
+
+    return ans;
+}
