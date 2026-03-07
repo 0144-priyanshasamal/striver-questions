@@ -1,0 +1,18 @@
+bool findPath(TreeNode* root, vector<int>& path, int x) {
+    
+    if(root == NULL) return false;
+
+    // add current node to path
+    path.push_back(root->val);
+
+    // if node found
+    if(root->val == x) return true;
+
+    // check left or right
+    if(findPath(root->left, path, x) || findPath(root->right, path, x))
+        return true;
+
+    // backtrack
+    path.pop_back();
+    return false;
+}
