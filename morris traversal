@@ -1,0 +1,28 @@
+vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> result;
+    TreeNode* cur = root;
+
+    while (cur != NULL) {
+        if (cur->left == NULL) {
+            result.push_back(cur->val);  // visit
+            cur = cur->right;
+        } else {
+            TreeNode* pre = cur->left;
+
+            // find rightmost node
+            while (pre->right != NULL && pre->right != cur) {
+                pre = pre->right;
+            }
+
+            if (pre->right == NULL) {
+                result.push_back(cur->val);  // visit BEFORE going left
+                pre->right = cur;           // create thread
+                cur = cur->left;
+            } else {
+                pre->right = NULL;          // remove thread
+                cur = cur->right;
+            }
+        }
+    }
+    return result;
+}
