@@ -1,0 +1,18 @@
+int findCeil(TreeNode* root, int x) {
+    int ceil = -1;
+
+    while (root != NULL) {
+        if (root->val == x) {
+            return root->val;
+        }
+
+        if (root->val < x) {
+            root = root->right;
+        } else {
+            ceil = root->val;
+            root = root->left;
+        }
+    }
+
+    return ceil;
+}
